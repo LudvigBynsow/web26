@@ -1,7 +1,7 @@
 
 <script lang="ts">
-import { deleteTodo, getTodos } from './todo.remote.ts';
-import { addTodo } from './todo.remote.ts';
+import { deleteTodo, getTodos } from './todo.remote';
+import { addTodo } from './todo.remote';
 
 </script>
 

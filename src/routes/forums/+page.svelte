@@ -1,6 +1,6 @@
 <script lang="ts">
-import {addForums, removeForums} from "./forums.remote.ts";
-import {getForums} from "./forums.remote.ts";
+import {addForums, removeForums} from "./forums.remote";
+import {getForums} from "./forums.remote";
 
 </script>
 
