@@ -1,0 +1,23 @@
+// use prisma-8
+
+model Todo {
+  id        String      @id @default(uuid())
+  text     String  
+}
+
+model Forum{
+  id String @id @default(uuid())
+  
+  name String
+  
+
+  messages Message[]
+}
+
+model Message{
+  id String @id @default(uuid())
+  content String
+  forum Forum @relation(fields: [forumid], references: [id])
+  forumid String
+}
+

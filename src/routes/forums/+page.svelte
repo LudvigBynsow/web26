@@ -6,14 +6,14 @@ import {getForums} from "./forums.remote";
 
 <ol>
     {#each await getForums() as forums}
-    {@const remove = removeForums.for(forums.password)}
+    {@const remove = removeForums.for(forums.id)}
     <form {...remove}>
 
         <span style="display: flex; align-items:center; gap:lrem;">
             <li>
             
-            <a href="/forums/{forums.password}">{forums.name}</a>
-            - {forums.password}
+            <a href="/forums/{forums.id}">{forums.name}</a>
+            
 
             </li>
             
@@ -27,7 +27,6 @@ import {getForums} from "./forums.remote";
 <form {...addForums}>
     <label>
             <input {...addForums.fields.name.as('text')} />
-            <input {...addForums.fields.password.as('number')} />
     <input type="submit" value="Add" />
     </label> 
 </form>

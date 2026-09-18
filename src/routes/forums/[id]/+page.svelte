@@ -1,7 +1,7 @@
 <script lang="ts">
 
 
-import {getMessages, createMessages} from "./forums.remote.ts"
+import {getMessages, createMessages} from "./forums.remote"
 
 let {params} = $props();
 </script>
@@ -11,7 +11,7 @@ let {params} = $props();
 
         <span style="display: flex; align-items:center; gap:lrem;">
             <li>
-            {messages.message}
+            {messages.content}
             </li>
             
         </span>
@@ -21,8 +21,8 @@ let {params} = $props();
 
 <form {...createMessages}>
     <label>
-            <input {...createMessages.fields.message.as('text')} />
-            <input {...createMessages.fields.id.as("hidden", params.id)} />
+            <input {...createMessages.fields.content.as('text')} />
+            <input {...createMessages.fields.forumid.as("hidden", params.id)} />
     <input type="submit" value="Add" />
     </label> 
 </form>

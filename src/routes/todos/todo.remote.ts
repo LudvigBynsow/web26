@@ -1,10 +1,11 @@
 import { form, query } from '$app/server';
 import * as v from 'valibot';
+import { db } from '../../prisma/db';
 
-let todos: {id:string, text:string}[]=[];
+
 
 export const getTodos = query(async () => {
-    return todos
+    return await db.orm.public.Todo.all()
 });
 
 export const addTodo = form(
@@ -12,7 +13,7 @@ export const addTodo = form(
         text: v.pipe(v.string(), v.nonEmpty())
     }),
     async ({ text }) => {
-        todos.push({id: Date.now().toString(),text});
+        await db.orm.public.Todo.create({text})
     },
 );
 
@@ -21,7 +22,6 @@ export const deleteTodo = form(
         id: v.pipe(v.string(), v.nonEmpty())
     }),
     async ({ id }) => {
-        await new Promise((resolve => setTimeout(resolve, 2000)));
-        todos = todos.filter((todo)=> todo.id != id);
+        await db.orm.public.Todo.where({id}).delete()
     },
 );
